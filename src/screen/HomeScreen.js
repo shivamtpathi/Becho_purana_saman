@@ -18,7 +18,7 @@ const HomeScreen = () => {
         .get();
       const result = snapshot.docs.map(docSnap => docSnap.data());
       // console.log(result)
-      setitem(result);
+      setitem(result); 
    
 
   };
