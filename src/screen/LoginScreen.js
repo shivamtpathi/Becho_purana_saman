@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import auth from '@react-native-firebase/auth';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+// import AsyncStorage from '@react-native-async-storage/async-storage';
 import {firebase} from '@react-native-firebase/database';
 import {useNavigation} from '@react-navigation/native';
 
@@ -45,13 +45,8 @@ const LoginScreen = () => {
     try {
       setLoading(true);
       const res = await auth()
-        .signInWithEmailAndPassword(email, password)
-        .then(async userCredential => {
-          // User is signed in, store their user ID token in AsyncStorage
-          const token = await userCredential.user.getIdToken();
-          await AsyncStorage.setItem('userToken', token);
-          // console.log(token)
-        });
+        .signInWithEmailAndPassword(email, password);
+        
 
       setLoading(false);
       navigation.navigate('MyTabs');
@@ -79,7 +74,7 @@ const LoginScreen = () => {
   }
 
   useEffect(() => {
-    console.log("hello shivam")
+    // console.log("hello shivam")
     const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
     return subscriber; // unsubscribe on unmount
   }, []);
@@ -103,7 +98,7 @@ const LoginScreen = () => {
         />
         <TextInput
           style={styles.textInput}
-          label="Create password"
+          label="Enter password"
           value={password}
           onChangeText={text => setPassword(text)}
         />

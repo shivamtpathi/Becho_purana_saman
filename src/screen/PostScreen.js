@@ -33,12 +33,13 @@ const PostScreen = () => {
 
 
   const imageStorage = async () => {
+    try {
+
     const uploadUri = image;
     // console.log(uploadUri)
     let filename = uploadUri.substring(uploadUri.lastIndexOf('/') + 1);
-    console.log(filename);
+    // console.log(filename);
 
-    try {
       setimgloading(true)
       const task = await storage().ref(filename).putFile(uploadUri);
 
@@ -58,6 +59,8 @@ const PostScreen = () => {
 setimagesrc(url)
 
     } catch (err) {
+      setimgloading(false)
+
       console.log(err);
     }
   };
