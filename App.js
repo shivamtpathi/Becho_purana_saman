@@ -13,8 +13,7 @@ const App = () => {
 <Navigation/>
 {/* <HomeScreen/> */}
 {/* <TestCode/> */}
-{/* <CameraImage/> */}
-{/* <PostScreen/> */}
+
 
     </SafeAreaView>
   )
